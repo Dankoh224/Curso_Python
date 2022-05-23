@@ -1,7 +1,4 @@
 # Reto rut identificador
-from unicodedata import digit
-
-
 rut = str(input("Ingrese su rut sin dígito verificador: "))
 dv = str(input("Ingrese el dígito verificador: "))
 listaRut = list(rut)
