@@ -1,7 +1,4 @@
 # Realizar programa que administra una lista de compra.
-from math import prod
-
-
 listaDeCompras = []
 
 menu = True
