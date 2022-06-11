@@ -13,11 +13,14 @@
 # 9. Si se aciertan todas las letras de la palabra: Se muestra que se ha ganado.
 import random
 import os
-contador = 0
+
+contadorIncorrectas = 0
+contadorCorrectas = 0
 # Paso 1: Obtener una palabra a adivinar.
-listaPalabras = ["perro","escalera","hipopotamo","cordillera"]
+listaPalabras = ["perro","escalera","hipopotamo","cordillera","petardo","continente","hipotalamo","chispa"]
 palabraAdivinar = listaPalabras[random.randint(0,len(listaPalabras))]
-print(palabraAdivinar)
+listaNueva = list(palabraAdivinar)
+os.system("cls")
 
 print("*************************")
 print("*** JUEGO EL AHORCADO ***")
@@ -30,54 +33,55 @@ print("           =======       ")
 print()
 
 # Paso 3: Mostrar un guión bajo por cada letra de la palabra.
+guiones = []
 for i in palabraAdivinar:
-    print("_", end = " ")
-print()
+    guiones.append("_")
+separador = " "
+print(separador.join(guiones))
 
-# Paso 4: Pedir al usuario que introduzca una letra. Si no es una única letra indicarlo. Si ya se ha dicho indicarlo.
 bandera = True
 while bandera:
-    letra = str(input("Ingrese una letra: "))
-    if len(letra) != 1:
-        print("Ingrese solo una letra.")
-    elif letra in "0123456789":
-        print("No puede ingresar números.")
-    else:
-        bandera = False
 
-# 5. Comprobar si esa letra está contenida en la palabra elegida.
-# 6. Si está: Volver a mostrar el dibujo de la horca como la última vez. Sustituir el guión correspodiente por la letra dicha.
-# 7. Si no está: Mostrar el dibujo de la horca al que se añade una parte. Volver a mostrar los guiones como la última vez.
+    # Paso 4: Pedir al usuario que introduzca una letra. Si no es una única letra indicarlo. Si ya se ha dicho indicarlo.
 
-guiones = []
-if letra in palabraAdivinar:
-    print("Adivinaste, la letra que ingresaste es parte de la palabra a adivinar.")
-    print()
-    print("*************************")
-    print("*** JUEGO EL AHORCADO ***")
-    print("*************************")
-    print("             !===N       ")
-    print("                 N       ")
-    print("                 N       ")
-    print("                 N       ")
-    print("           =======       ")
-    print()
-
-# En estas líneas guardaremos las letras en una lista e imprimiremos.
-
-    for i in palabraAdivinar:
-        if letra == i:
-            guiones.append("{} ".format(i))
+    banderaLetra = True
+    while banderaLetra:
+        letra = str(input("Ingrese una letra: "))
+        if len(letra) != 1:
+            print("Ingrese solo una letra.")
+        elif letra in "0123456789":
+            print("No puede ingresar números.")
         else:
-            guiones.append("_ ")
-    for i in guiones:
-        print(i,end=" ")
-    print()
+            banderaLetra = False
+    
+    os.system("cls")
 
-if letra not in palabraAdivinar:
-    contador += 1
-    if contador == 1:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    # 5. Comprobar si esa letra está contenida en la palabra elegida.
+    # 6. Si está: Volver a mostrar el dibujo de la horca como la última vez. Sustituir el guión correspodiente por la letra dicha.
+    # 7. Si no está: Mostrar el dibujo de la horca al que se añade una parte. Volver a mostrar los guiones como la última vez.
+
+    if letra not in palabraAdivinar or letra in guiones:
+        contadorIncorrectas += 1
+        print("Letra incorrecta. Tiene 6 intentos. Lleva {}".format(contadorIncorrectas))
+    else:
+        # En estas líneas guardaremos las letras en una lista e imprimiremos.
+        for i in range(0,len(palabraAdivinar)):
+            if letra == palabraAdivinar[i]:
+                guiones.pop(i)
+                guiones.insert(i,palabraAdivinar[i])
+    
+    if contadorIncorrectas == 0:
+        print()
+        print("*************************")
+        print("*** JUEGO EL AHORCADO ***")
+        print("*************************")
+        print("             !===N       ")
+        print("                 N       ")
+        print("                 N       ")
+        print("                 N       ")
+        print("           =======       ")
+        print()    
+    if contadorIncorrectas == 1:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -88,8 +92,7 @@ if letra not in palabraAdivinar:
         print("                 N       ")
         print("           =======       ")
         print()
-    elif contador == 2:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    elif contadorIncorrectas == 2:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -100,8 +103,7 @@ if letra not in palabraAdivinar:
         print("                 N       ")
         print("           =======       ")
         print()
-    elif contador == 3:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    elif contadorIncorrectas == 3:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -112,8 +114,7 @@ if letra not in palabraAdivinar:
         print("                 N       ")
         print("           =======       ")
         print()
-    elif contador == 4:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    elif contadorIncorrectas == 4:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -124,8 +125,7 @@ if letra not in palabraAdivinar:
         print("                 N       ")
         print("           =======       ")
         print()
-    elif contador == 5:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    elif contadorIncorrectas == 5:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -136,8 +136,7 @@ if letra not in palabraAdivinar:
         print("            /    N       ")
         print("           =======       ")
         print()
-    elif contador == 6:
-        print("La letra escogida no pertenece a la palabra a adivinar.")
+    elif contadorIncorrectas == 6:
         print()
         print("*************************")
         print("*** JUEGO EL AHORCADO ***")
@@ -148,32 +147,13 @@ if letra not in palabraAdivinar:
         print("            / \  N       ")
         print("           =======       ")
         print()
-        print("Has perdido")
-    
 
+    separador = " "
+    print(separador.join(guiones))
 
-
-
-
-
-
-
-# bandera = False
-# while bandera:
-#     os.system(0.1)
-#     palabra = "madre"
-#     intento = str(input("Dime una letra: "))
-    
-#     if intento == "m":
-#         os.system(0.1)
-#         print("*************************")
-#         print("*** JUEGO EL AHORCADO ***")
-#         print("*************************")
-#         print("             !===N       ")
-#         print("                 N       ")
-#         print("                 N       ")
-#         print("                 N       ")
-#         print("           =======       ")
-#         print()
-#         print("         _ _ _ _ _       ")
-#         print()
+    if contadorIncorrectas == 6:
+        print("¡¡O no!! Lo sentimos, has perdido.")
+        bandera = False
+    if listaNueva == guiones:
+        print("¡¡Waaaauuu!! ¡¡Has acertado!! ¡¡Ganaste!!")
+        bandera = False
