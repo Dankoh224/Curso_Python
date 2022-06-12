@@ -4,6 +4,14 @@ def tripleDelDoble (numero):
     resultado = 3*2*numero
     return resultado
 
-x = tripleDelDoble(float(input("Ingrese un número: ")))
+x = float(input("Ingrese un número: "))
+print(tripleDelDoble(x))
 
-print(x)
+# NOTA: si la función la escribimos con un print en vez de un return, se imprime inmediatamente al llamar a la función:
+
+def DobleDelTriple (numero):
+    resultado = 3*2*numero
+    print(resultado)
+
+x = float(input("Ingrese un número: "))
+DobleDelTriple(x)
