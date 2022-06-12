@@ -1,16 +1,3 @@
-# 1. Elegir aleatoriamente una palabra de una lista de palabras. 
-# 2. Mostrar el dibujo de una horca.
-# 3. Mostrar un guión bajo por cada letra de la palabra.
-# 4. Pedir al usuario que introduzca una letra:
-#       Si no es una única letra indicarlo. Si ya se ha dicho indicarlo.
-# 5. Comprobar si esa letra está contenida en la palabra elegida.
-# 6. Si está: Volver a mostrar el dibujo de la horca como la última vez.
-#       Sustituir el guión correspodiente por la letra dicha.
-# 7. Si no está: Mostrar el dibujo de la horca al que se añade una parte.
-#       Volver a mostrar los guiones como la última vez.
-# 8. Si se falla 6 veces: Se completa el dibujo del ahorcado.
-# Se muestra que se ha perdido.
-# 9. Si se aciertan todas las letras de la palabra: Se muestra que se ha ganado.
 import random
 import os
 
@@ -56,9 +43,7 @@ while bandera:
     
     os.system("cls")
 
-    # 5. Comprobar si esa letra está contenida en la palabra elegida.
-    # 6. Si está: Volver a mostrar el dibujo de la horca como la última vez. Sustituir el guión correspodiente por la letra dicha.
-    # 7. Si no está: Mostrar el dibujo de la horca al que se añade una parte. Volver a mostrar los guiones como la última vez.
+    # 5. Comprobar si esa letra está contenida en la palabra elegida. Si está: Volver a mostrar el dibujo de la horca como la última vez. Sustituir el guión correspodiente por la letra dicha. Si no está: Mostrar el dibujo de la horca al que se añade una parte. Volver a mostrar los guiones como la última vez.
 
     if letra not in palabraAdivinar or letra in guiones:
         contadorIncorrectas += 1
@@ -152,7 +137,7 @@ while bandera:
     print(separador.join(guiones))
 
     if contadorIncorrectas == 6:
-        print("¡¡O no!! Lo sentimos, has perdido.")
+        print('¡¡O no!! Lo sentimos, has perdido. La palabra era "{}".'.format(palabraAdivinar))
         bandera = False
     if listaNueva == guiones:
         print("¡¡Waaaauuu!! ¡¡Has acertado!! ¡¡Ganaste!!")

@@ -15,6 +15,7 @@
 
 print("MUERTOS Y HERIDOS")
 import random
+import os
 lista_resultados = []
 # Ciclo para crear numero aleatorio sin repeticion.
 numero_pc = ""
@@ -59,7 +60,7 @@ while contador < 15:
             else:
                 heridos += 1
     print()
-
+    os.system("cls")
     # Entrega y guardado de resultados:
     resultado = "Intento {}: el número {} tiene {} muerto/s y {} herido/s.".format(intento,numero_jugador,muertos,heridos)
     lista_resultados.append(resultado)
@@ -70,7 +71,7 @@ while contador < 15:
 
     # Ganaste.
     if numero_jugador == numero_pc:
-        print("¡GANASTE!")
+        print("¡GANASTE! El número era {}.".format(numero_pc))
         break
 
     # Opción para salir.
@@ -89,4 +90,4 @@ while contador < 15:
     #         salir = True
 
 if contador >= 15:
-    print("¡PERDISTE!")
+    print("¡PERDISTE! El número era {}.".format(numero_pc))
