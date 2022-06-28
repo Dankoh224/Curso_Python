@@ -8,7 +8,6 @@ def mayor_de_dos(a,b):
 def intermedio(a,b,c):
     mayor1 = mayor_de_dos(a,b)
     mayor2 = mayor_de_dos(a,c)
-    mayor = mayor_de_dos(mayor1,mayor2)
     if mayor1 > mayor2:
         return mayor2
     elif mayor1 < mayor2:
