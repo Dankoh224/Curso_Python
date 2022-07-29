@@ -18,3 +18,11 @@ inventario = {
 articulo = str(input("Ingrese nombre articulo: "))
 cantidad = inventario.get(articulo,0)
 print("{}: {}".format(articulo,cantidad))
+
+# MÉTODO ZIP: Si quisieramos convertir dos listas en un diccionario, solo usaremos el método zip. 
+letras = ["A","B","C","D","E"]
+numeros = [1, 2, 3, 4, 5]
+diccionario = dict(zip(letras,numeros))
+print(diccionario)
+
+
