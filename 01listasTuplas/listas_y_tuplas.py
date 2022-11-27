@@ -241,7 +241,8 @@ print(L)
 que cambie el valor para la original debes usar la función L.copy()"""
 s = L.copy()
 s[2] = "perrito"
-print(L)
+L.clear()
+print(s)
 
 #34) CREAR LISTA que CUENTE cantidad de elementos.
 print("34)")
