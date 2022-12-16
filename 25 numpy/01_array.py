@@ -5,3 +5,4 @@ primer_array = np.array([
     [5,4,3,2,1]
 ])
 print(primer_array)
+print("hola")
